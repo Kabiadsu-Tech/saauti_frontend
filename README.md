@@ -1,3 +1,8 @@
 ## This is repo for Saauti Frontend
---> yarn install
--->yarn start
+
+
+**<i>Run the following commands to get started</i>
+
+**yarn install**
+
+**yarn start**
