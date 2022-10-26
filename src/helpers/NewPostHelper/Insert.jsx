@@ -20,11 +20,11 @@ const Insert = () => {
     setShowOptions(!showOptions);
   };
   const textFieldToggler = (e) => {
-    setShowTextField(true);
+    setShowTextField(!showTextField);
     setShowImageField(false);
   };
   const imageFieldToggler = (e) => {
-    setShowImageField(true);
+    setShowImageField(!showImageField);
     setShowTextField(false);
   };
   //   hw4n6ufg
