@@ -1,40 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useMemo } from "react";
+import JoditEditor from "jodit-react";
 import axios from "axios";
-import { TextareaAutosize, Card, Button } from "@mui/material";
-import ControlPointIcon from "@mui/icons-material/ControlPoint";
-import TextFormatIcon from "@mui/icons-material/TextFormat";
-import ImageIcon from "@mui/icons-material/Image";
+import { Card, Button, TextField } from "@mui/material";
 
-// We don't want this to re render again
-const pageLayout = [];
-const Insert = () => {
-  const [showOptions, setShowOptions] = useState(false);
-  const [text, setText] = useState("");
-  const [image, setImage] = useState("");
+const Insert = ({ placeholder }) => {
+  // for jodit
+  const editor = useRef(null);
+  const [content, setContent] = useState("");
+  // jodit part ends here
   const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
   const [heroImage, setHeroImage] = useState("");
   const [heroImageCaption, setHeroImageCaption] = useState("");
-  const [showTextField, setShowTextField] = useState(false);
-  const [showImageField, setShowImageField] = useState(false);
 
-  const handleNewOptions = (e) => {
-    // to hide the input field when plus button is pressed again
-    showTextField && setShowTextField(false);
-    showImageField && setShowImageField(false);
-    setShowOptions(!showOptions);
-  };
-  const textFieldToggler = (e) => {
-    setShowTextField(!showTextField);
-    setShowImageField(false);
-  };
-  const imageFieldToggler = (e) => {
-    setShowImageField(!showImageField);
-    setShowTextField(false);
-  };
   //   hw4n6ufg
-  const textHandler = (e) => {
-    setText(e.target.value);
-  };
+
   // title handler
   const titleHandler = (e) => {
     setTitle(e.target.value);
@@ -46,41 +26,16 @@ const Insert = () => {
   const heroImageCaptionHandler = (e) => {
     setHeroImageCaption(e.target.value);
   };
-  //   image handler
-  const imageHandler = (e) => {
-    setImage(e.target.value);
+  const authorHandler = (e) => {
+    setAuthor(e.target.value);
   };
-  const handleTextSubmit = (e) => {
-    e.preventDefault();
-    try {
-      pageLayout.push({ paragraph: text });
-      console.log("Page Layout", pageLayout);
-      setText("");
-    } catch {
-      console.log("Could not append");
-    }
-  };
-
-  //   Image Submit
-  const handleImageSubmit = (e) => {
-    e.preventDefault();
-    try {
-      pageLayout.push({ img: image });
-      console.log("Page Layout", pageLayout);
-      setImage("");
-    } catch {
-      console.log("Could not append");
-    }
-  };
-  console.log(title, heroImage);
   // posts to api
   const postToAPIHandler = (e) => {
-    console.log("I ran");
     e.preventDefault();
     axios
       .post("/posts", {
         userId: "635d5908a3f908474195adff",
-        postData: pageLayout,
+        postData: content,
         title: title,
         author: "Pamir Gautam",
         postHeroImage: heroImage,
@@ -88,6 +43,9 @@ const Insert = () => {
       })
       .then((response) => {
         console.log(response);
+        if (response.status === 200) {
+          alert("The post has been published");
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -97,101 +55,65 @@ const Insert = () => {
     <div>
       <Card style={{ marginTop: "50px" }} variant="outlined">
         <form id="postForm" action="submit" onSubmit={postToAPIHandler}>
-          <TextareaAutosize
+          <TextField
+            id="outlined-basic"
             value={title}
             required
             placeholder="Title of your blog"
             className="addNewText"
             fullwidth
             onChange={titleHandler}
-            id="fullWidth"
-            label="Write"
-            variant="outlined"
-          />
-          <TextareaAutosize
+          />{" "}
+          <br />
+          <TextField
+            id="outlined-basic"
             value={heroImage}
             required
             placeholder="Hero Image URL"
             className="addNewText"
             fullwidth
             onChange={heroImageHandler}
-            id="fullWidth"
-            label="Write"
-            variant="outlined"
           />
-          <TextareaAutosize
+          <br />
+          <TextField
+            id="outlined-basic"
             value={heroImageCaption}
             required
             placeholder="Hero Image Caption"
             className="addNewText"
             fullwidth
             onChange={heroImageCaptionHandler}
-            id="fullWidth"
-            label="Write"
-            variant="outlined"
+          />
+          <TextField
+          sx={{ mt:"1rem" }}
+            value={author}
+            id="outlined-basic"
+            required
+            placeholder="Author Name"
+            className="addNewText"
+            fullwidth
+            onChange={authorHandler}
           />
         </form>
-
-        {/* Dynamic Form for dynamic post data */}
-        <div className="insert">
-          <span onClick={handleNewOptions} style={{ cursor: "pointer" }}>
-            <ControlPointIcon />
-          </span>
-          <span className={showOptions ? "showOptions" : "hideOptions"}>
-            {" "}
-            <TextFormatIcon onClick={textFieldToggler} />
-          </span>
-          <span className={showOptions ? "showOptions" : "hideOptions"}>
-            <ImageIcon onClick={imageFieldToggler} />
-          </span>
-          {/* form for adding new texts */}
-          <div className={showTextField ? "showOptions" : "hideOptions"}>
-            <form id="addText" onSubmit={handleTextSubmit} action="submit">
-              <TextareaAutosize
-                value={text}
-                placeholder="Type Here"
-                className="addNewText"
-                fullwidth
-                onChange={textHandler}
-                id="fullWidth"
-                label="Write"
-                variant="outlined"
-              />
-              <br />
-              <Button
-                sx={{ ml: 4.5, mt: 2, mb: 1, width: "10%" }}
-                className="addContentBtn"
-                type="submit"
-                variant="contained"
-                color="success"
-                form="addText"
-              >
-                {" "}
-                Add
-              </Button>
-            </form>
-          </div>
-          {/* For Image */}
-          <div className={showImageField ? "showOptions" : "hideOptions"}>
-            <form onSubmit={handleImageSubmit} action="submit">
-              <input type="text" onChange={imageHandler} value={image} />
-              <Button
-                sx={{ ml: 4.5, mt: 2, mb: 1, width: "10%" }}
-                className="addContentBtn"
-                type="submit"
-                variant="contained"
-                color="success"
-              >
-                {" "}
-                Add
-              </Button>
-            </form>
-          </div>
+        <div className="joddit-form-container">
+          <JoditEditor
+            ref={editor}
+            value={content}
+            // config={config}
+            tabIndex={1} // tabIndex of textarea
+            onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+            onChange={(newContent) => {}}
+          />
+        </div>
+        <div style={{ width: "90%", margin: "auto" }}>
+          <form style={{ width: "100%" }} id="addText" action="submit">
+            <br />
+          </form>
         </div>
       </Card>
       <Button
         form="postForm"
-        sx={{ ml: 4.5, mt: 2, mb: 1, width: "25%" }}
+        sx={{ ml: "5vw", width: "90vw" }}
         className="addContentBtn"
         type="submit"
         variant="contained"
