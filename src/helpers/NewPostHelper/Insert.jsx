@@ -33,7 +33,7 @@ const Insert = ({ placeholder }) => {
   const postToAPIHandler = (e) => {
     e.preventDefault();
     axios
-      .post("https://saauti-dev.onrender.com/posts", {
+      .post("posts", {
         userId: "635d5908a3f908474195adff",
         postData: content,
         title: title,
