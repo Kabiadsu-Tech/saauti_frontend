@@ -22,7 +22,7 @@ export default function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post("/auth", {
+      .post("https://saauti-dev.onrender.com/auth", {
         email: userEmail,
         password: userPassword,
       })
@@ -39,7 +39,7 @@ export default function Login() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider  theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -112,4 +112,4 @@ export default function Login() {
     </ThemeProvider>
   );
 }
-// export default Login;
+
