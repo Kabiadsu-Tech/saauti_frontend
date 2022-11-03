@@ -1,0 +1,13 @@
+.logoContainer h1{
+    font-size: 73px !important;
+    display: flex;
+    justify-content: center;
+}
+
+
+#basic-navbar-nav a {
+color: black;
+  text-decoration: none;
+  padding: 12px;
+  font-size: 24px;
+}
