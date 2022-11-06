@@ -1,0 +1,53 @@
+.leftImageRightText{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 2rem;
+    width: 50%;
+    font-weight: 400;
+
+    .imageContainer{
+        width: 400px;
+       
+        img{
+            width: 100%;
+           
+            background-position: center center;
+
+            object-fit: contain;
+        }
+    }
+
+   .textContainer{
+    margin-left: 1rem;
+    .authorName{
+        text-align: left;
+        margin-top: 5px;
+        box-sizing: inherit;
+        color: #dc0f14;
+        font-family: tradegothiclt;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 2rem;
+        position: relative;
+        font-size: 1.6rem;
+        
+       
+    }
+    .title{
+        h3{
+            margin-top: 5px;
+            font-size: 2rem !important;
+        }
+
+    }
+   }
+}
+
+@media only screen and (max-width: 1293px) {
+    .leftImageRightText{
+        flex-wrap: wrap;
+        width: 400px;
+        overflow-x: hidden !important;
+    }
+}

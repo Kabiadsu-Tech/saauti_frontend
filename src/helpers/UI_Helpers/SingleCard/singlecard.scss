@@ -1,0 +1,40 @@
+.singlePost{
+    width: 400px;
+    font-weight: 400;
+    text-align: left;
+    color: #1d1c1c;
+    font-family: ysobelpro,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen-Sans,Ubuntu,Cantarell,helvetica neue,sans-serif;
+    line-height: 1.5;
+    box-sizing: inherit;
+    display: block;    
+    padding-top: 2rem;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    .imageContainer{
+        img{
+            width: 400px;
+        }
+    }
+
+    .authorName{
+        text-align: left;
+        margin-top: 5px;
+        box-sizing: inherit;
+        color: #dc0f14;
+        font-family: tradegothiclt;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 2rem;
+        position: relative;
+        font-size: 1.6rem;
+       
+    }
+    .title{
+        h3{
+            margin-top: 5px;
+            font-size: 2rem !important;
+        }
+
+    }
+}
+

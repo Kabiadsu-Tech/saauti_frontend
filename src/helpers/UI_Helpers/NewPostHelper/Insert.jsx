@@ -1,4 +1,5 @@
 import React, { useState, useRef, useMemo } from "react";
+import "./insert.scss"
 import JoditEditor from "jodit-react";
 import axios from "axios";
 import { Card, Button, TextField } from "@mui/material";
@@ -33,7 +34,7 @@ const Insert = ({ placeholder }) => {
   const postToAPIHandler = (e) => {
     e.preventDefault();
     axios
-      .post("https://saauti-dev.onrender.com/posts", {
+      .post("http://localhost:5000/posts", {
         userId: "635d5908a3f908474195adff",
         postData: content,
         title: title,
@@ -42,7 +43,6 @@ const Insert = ({ placeholder }) => {
         postHeroImageCaption: heroImageCaption,
       })
       .then((response) => {
-        console.log(response);
         if (response.status === 200) {
           alert("The post has been published");
         }
@@ -61,7 +61,7 @@ const Insert = ({ placeholder }) => {
             required
             placeholder="Title of your blog"
             className="addNewText"
-            fullwidth
+            fullwidth="true"
             onChange={titleHandler}
           />{" "}
           <br />
@@ -71,7 +71,7 @@ const Insert = ({ placeholder }) => {
             required
             placeholder="Hero Image URL"
             className="addNewText"
-            fullwidth
+            fullwidth="true"
             onChange={heroImageHandler}
           />
           <br />
@@ -81,7 +81,7 @@ const Insert = ({ placeholder }) => {
             required
             placeholder="Hero Image Caption"
             className="addNewText"
-            fullwidth
+            fullwidth="true"
             onChange={heroImageCaptionHandler}
           />
           <TextField
@@ -91,7 +91,7 @@ const Insert = ({ placeholder }) => {
             required
             placeholder="Author Name"
             className="addNewText"
-            fullwidth
+            fullwidth="true"
             onChange={authorHandler}
           />
         </form>

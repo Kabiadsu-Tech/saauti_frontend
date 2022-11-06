@@ -1,18 +1,21 @@
-import { useState,useEffect } from "react";
+import{useFetch} from "../../hooks/useFetch"
 import {Link,useParams} from "react-router-dom"
 const SinglePost = () => {
-  const [singlePost,setSinglePost]= useState()
-  const {id}=useParams()
-  useEffect(() => {
-    document.title = "Hello";
-    fetch(`https://saauti-dev.onrender.com/posts/${id}`)
-      .then((response) =>{ response.json()})
-      .then((data) => setSinglePost(data));
-  }, []);
-  console.log("Hi",id)
+  const [singlePost] = useFetch(`${process.env.REACT_APP_DEVELOPMENT_API}/posts`);
   return (
-    <div>SinglePost page for id {id}
-      {singlePost && <p>The post is with me</p>}
+    <div>
+      <h2>All Posts </h2>
+      {singlePost &&
+        singlePost.map((data) => (
+          <div>
+            <p>{data.author}</p>
+            <img src={data.postHeroImage} />
+            {/* Need to find alternative for the dangerouslySetInnerHTML */}
+            <div dangerouslySetInnerHTML={{__html:data.postData}} />
+           <Link to={`${data._id}`}>Read More</Link>
+
+          </div>
+        ))}
     </div>
   )
 }

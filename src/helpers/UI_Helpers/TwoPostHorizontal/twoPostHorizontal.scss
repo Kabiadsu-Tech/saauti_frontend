@@ -1,0 +1,21 @@
+.twoHorizontalPostContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    :first-child{
+        margin-right: 1rem;
+    }
+  
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .singlePost{
+        width: 80vw !important;
+        margin: auto !important;
+    }
+    .singlePost .imageContainer img {
+        width: 320px !important;
+    }
+}
