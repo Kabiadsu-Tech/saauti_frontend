@@ -66,7 +66,7 @@ export default function Login() {
             <TextField
               margin="normal"
               required
-              fullwidth
+              fullwidth="true"
               id="email"
               label="Email Address"
               name="email"
@@ -77,7 +77,7 @@ export default function Login() {
             <TextField
               margin="normal"
               required
-              fullwidth
+              fullwidth="true"
               name="password"
               label="Password"
               type="password"
@@ -88,7 +88,7 @@ export default function Login() {
             <br />
             <Button
               type="submit"
-              fullwidth
+              fullwidth="true"
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >

@@ -3,7 +3,10 @@
     display: flex;
     justify-content: center;
 }
-
+.navbar{
+  display: flex;
+  width: 100%;
+}
 
 #basic-navbar-nav a {
 color: black;
