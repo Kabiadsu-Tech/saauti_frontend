@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from "react-router-dom";
+
+import { checkLogin } from "../../redux/features/auth";
+// UI imports
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -15,10 +20,13 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const theme = createTheme();
 
 export default function Login() {
+  let navigate = useNavigate();
+  const login = useSelector((state)=>state.login.value)
+  const dispatch = useDispatch()
   const [userId, setUserId] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const [wrongCredentials,setWrongCredentials]=useState(false)
+  const [wrongCredentials,setWrongCredentials]=useState(true)
   const handleLogin = (e) => {
     e.preventDefault();
     axios
@@ -30,8 +38,11 @@ export default function Login() {
         if(response.data==="Wrong Credentials"){
             return setWrongCredentials(true)
         }
+        alert("LoggedIn")
         setWrongCredentials(false)
         setUserId(response);
+        dispatch(checkLogin({isLoggedIn:true,userId:5}));
+        navigate(-1);
       })
       .catch((error) => {
         console.log(error);
@@ -56,7 +67,6 @@ export default function Login() {
           <Typography component="h1" variant="h5">
             Login to Saauti
           </Typography>
-          {wrongCredentials?<p>Retry your credentials</p>:<p>You should be logged in</p>}
           <Box
             component="form"
             onSubmit={handleLogin}
