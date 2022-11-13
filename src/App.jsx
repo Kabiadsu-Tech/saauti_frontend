@@ -10,6 +10,7 @@ import AllPost from "./pages/AllPost/AllPost"
 function App() {
   return (
     <div className="App">
+      {/* Here we have added the routes information, these are not displayed on our navbar, check <SharedLayout/> for adding to nav items */}
       <Routes>
         <Route path="/" element={<SharedLayout/>}>
           <Route index element={<Homepage />} />
