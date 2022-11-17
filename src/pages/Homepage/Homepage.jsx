@@ -5,6 +5,7 @@ import LeftImageRightText from "../../helpers/UI_Helpers/LeftImageRightText/Left
 import TwoPostHorizontal from "../../helpers/UI_Helpers/TwoPostHorizontal/TwoPostHorizontal";
 import { useFetch } from "../../hooks/useFetch";
 import "./homepage.scss";
+
 const Homepage = () => {
   const [heroPost, setHeroPost] = useState();
   const { data, isPending, error } = useFetch(
@@ -13,61 +14,35 @@ const Homepage = () => {
   const setDifferentPosts = useCallback(() => {
     data && setHeroPost(data[0]);
   }, [data]);
+
   useEffect(() => {
     setDifferentPosts();
   }, [setDifferentPosts]);
-  heroPost && console.log(heroPost["title"]);
-  console.log(data);
+
+
+  heroPost && console.log("Bole toh hero", heroPost);
   return (
     <div className="homepage">
       {isPending && <Spinner animation="grow" />}
       {error && <div>{error} </div>}
-      <div className="heroPostContainer">
-        {/* <HomepageHeroHelper/> */}
-        <TwoPostHorizontal />
-        <LeftImageRightText
-          imageLink={
-            "https://www.nayapatrikadaily.com/uploads/news/images/PRAMILA-DEVKOTA2021-10-27-08-56-52.jpeg"
-          }
-          authorName={"Pramila Devkota"}
-          title={"के वैदेशिक सहायता खराब हो ?"}
-          postSnippet={
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius conseqrepellendus saepe libero tenetur, non, beatae esse pariatur eos delectus error veritatis maxime aliquam nemo....."
-          }
-        />
-        <LeftImageRightText
-          imageLink={
-            "https://images.unsplash.com/photo-1550642249-6e5605421172?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80"
-          }
-          authorName={"Pramila Devkota"}
-          title={"के वैदेशिक सहायता खराब हो ?"}
-          postSnippet={
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius conseqrepellendus saepe libero tenetur, non, beatae esse pariatur eos delectus error veritatis maxime aliquam nemo....."
-          }
-        />
-        <LeftImageRightText
-          imageLink={
-            "https://www.nayapatrikadaily.com/uploads/news/images/PRAMILA-DEVKOTA2021-10-27-08-56-52.jpeg"
-          }
-          authorName={"Pramila Devkota"}
-          title={"के वैदेशिक सहायता खराब हो ?"}
-          postSnippet={
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius conseqrepellendus saepe libero tenetur, non, beatae esse pariatur eos delectus error veritatis maxime aliquam nemo....."
-          }
-        />
-        <LeftImageRightText
-          imageLink={
-            "https://www.nayapatrikadaily.com/uploads/news/images/PRAMILA-DEVKOTA2021-10-27-08-56-52.jpeg"
-          }
-          authorName={"Pramila Devkota"}
-          title={"के वैदेशिक सहायता खराब हो ?"}
-          postSnippet={
-            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius conseqrepellendus saepe libero tenetur, non, beatae esse pariatur eos delectus error veritatis maxime aliquam nemo....."
-          }
-        />
-      </div>
+      {/* The main post is the lates post */}
+      {heroPost && (
+        <div className="mainPost">
+          <div className="imageContainer">
+            <img src={heroPost["postHeroImage"]} alt="" />
+          </div>
+          <p className="authorName">{heroPost["author"]}</p>
+          <div className="title">
+            <h1>{heroPost["title"]}</h1>
+          </div>
+          <div dangerouslySetInnerHTML={{ __html: heroPost["postData"] }} />
+        </div>
+      )}
     </div>
   );
-};
+}
+
+
+
 
 export default Homepage;

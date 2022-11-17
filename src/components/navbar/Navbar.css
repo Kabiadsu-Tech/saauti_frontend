@@ -3,14 +3,21 @@
     display: flex;
     justify-content: center;
 }
-.navbar{
-  display: flex;
-  width: 100%;
-}
 
+.navbarContainer{
+  position: relative;
+  background-color: red;
+  /* margin-right: 0.5rem;   */
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+.navbar{
+ padding-left: 20vw;
+}
 #basic-navbar-nav a {
 color: black;
   text-decoration: none;
   padding: 12px;
   font-size: 24px;
+  
 }
