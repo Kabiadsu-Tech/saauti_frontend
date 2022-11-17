@@ -14,7 +14,7 @@ const SinglePost = () => {
     // Author Name HEading PostedDate Picture NEws
     <div className="singlePostContainer">
       <div className="authorName">{currentPost["author"]}</div>
-      <h1>{currentPost["title"]}</h1>
+      <h1 className="postTitle">{currentPost["title"]}</h1>
       {/* <small className="date">{currentPost["date"]}</small> */}
       <div className="postPicture"><img src={currentPost["postHeroImage"]} alt="" /></div>
       <div dangerouslySetInnerHTML={{__html:currentPost["postData"]}} />
