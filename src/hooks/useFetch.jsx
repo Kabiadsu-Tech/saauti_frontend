@@ -5,7 +5,6 @@ export const useFetch = (url) => {
   const [error,setError]= useState(null)
 
   useEffect(() => {
-  
     const controller = new AbortController()  // for cleanup
     const fetchData = async ()=>{
       setIsPending(true)

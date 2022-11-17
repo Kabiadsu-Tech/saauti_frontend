@@ -1,9 +1,8 @@
-import {useSelector,useDispatch} from "react-redux"
+import { useSelector, useDispatch } from "react-redux";
 import { checkLogin } from "../../redux/features/auth";
 import { useNavigate } from "react-router-dom";
 import { Navigate, NavLink } from "react-router-dom";
 // UI
-import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
@@ -11,25 +10,23 @@ import "./Navbar.css";
 
 const NavbarComponent = () => {
   let navigate = useNavigate();
-  const login = useSelector((state)=>state.login.value)
-  const dispatch = useDispatch()
-  const logoutHanlder=()=>{
-      navigate("/");
-      dispatch(checkLogin({isLoggedIn:false,userId:null}))
-    }
+  const login = useSelector((state) => state.login.value);
+  const dispatch = useDispatch();
+  const logoutHanlder = () => {
+    navigate("/");
+    dispatch(checkLogin({ isLoggedIn: false, userId: null }));
+  };
   return (
     <div>
       <div className="logoContainer">
         <h1>साउती</h1>
       </div>
-      {/* Sano screen ma navbar ko styling bigrincha tyo chai react-bootstrap ko kunai kunai field overwrite garera ho */}
-      <Navbar className="navbar" bg="light" expand="lg">
-        <Container>
+    
+        <Navbar  className="navbar justify-content-center"  bg="light" expand="lg">
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="">
             <Nav className="me-auto">
               <NavLink to="/">होमपेज</NavLink>
-
               <NavDropdown title="समाचार" id="basic-nav-dropdown">
                 <NavDropdown.Item>
                   <NavLink to="/राजनीति">राजनीति</NavLink>
@@ -67,14 +64,16 @@ const NavbarComponent = () => {
               <NavLink to="/create">पोडकाष्ट</NavLink>
 
               <NavLink to="/create">म्यागजिन </NavLink>
-              {
-                login.isLoggedIn?<NavLink onClick={logoutHanlder} >लग-out</NavLink>:<NavLink to="/login">लग-इन</NavLink>
-              }
+              {login.isLoggedIn ? (
+                <NavLink onClick={logoutHanlder}>लग-out</NavLink>
+              ) : (
+                <NavLink to="/login">लग-इन</NavLink>
+              )}
               {/* <NavLink to="/login">लग-इन</NavLink> */}
             </Nav>
           </Navbar.Collapse>
-        </Container>
-      </Navbar>
+        </Navbar>
+    
     </div>
   );
 };

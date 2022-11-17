@@ -6,10 +6,10 @@ export const loggedInSlice = createSlice({
   initialState,
   reducers: {
     checkLogin: (state, action) => {
-      state.value=action.payload
+      state.value = action.payload;
     },
   },
 });
 
-export const {checkLogin}=loggedInSlice.actions;
+export const { checkLogin } = loggedInSlice.actions;
 export default loggedInSlice.reducer;

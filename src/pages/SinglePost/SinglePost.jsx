@@ -1,23 +1,26 @@
-import{useFetch} from "../../hooks/useFetch"
-import {Link,useParams} from "react-router-dom"
+import { useFetch } from "../../hooks/useFetch";
+import "./singlePost.scss"
+import { Link, useParams } from "react-router-dom";
+import { useState,useEffect } from "react";
 const SinglePost = () => {
-  const [singlePost] = useFetch(`${process.env.REACT_APP_DEVELOPMENT_API}/posts`);
+  const [currentPost,setCurrentPost]= useState("")
+  let {id}= useParams()
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_DEVELOPMENT_API}/posts/${id}`).then((response)=>response.json()).then(data=>setCurrentPost(data))
+  }, [])
+  
+  currentPost && console.log("yoYo ",currentPost)
   return (
-    <div>
-      <h2>All Posts </h2>
-      {singlePost &&
-        singlePost.map((data) => (
-          <div>
-            <p>{data.author}</p>
-            <img src={data.postHeroImage} />
-            {/* Need to find alternative for the dangerouslySetInnerHTML */}
-            <div dangerouslySetInnerHTML={{__html:data.postData}} />
-           <Link to={`${data._id}`}>Read More</Link>
+    // Author Name HEading PostedDate Picture NEws
+    <div className="singlePostContainer">
+      <div className="authorName">{currentPost["author"]}</div>
+      <h1 className="postTitle">{currentPost["title"]}</h1>
+      {/* <small className="date">{currentPost["date"]}</small> */}
+      <div className="postPicture"><img src={currentPost["postHeroImage"]} alt="" /></div>
+      <div dangerouslySetInnerHTML={{__html:currentPost["postData"]}} />
 
-          </div>
-        ))}
     </div>
-  )
-}
+  );
+};
 
-export default SinglePost
+export default SinglePost;
