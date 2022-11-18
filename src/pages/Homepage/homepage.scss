@@ -1,0 +1,49 @@
+.homepage{
+    width: 50%;
+    margin: 3rem auto;
+   .mainPost{
+    width: 100%;
+    position: relative;
+    .imageContainer{
+        img{
+            width: 100%;
+            margin: auto;
+            z-index: -1;
+        }
+    }
+    .mainPostSnippet{
+        padding: 1rem;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        width:90%;
+        margin-left: 5%;
+        position: absolute;
+        background-color: white;
+        bottom: -15%;
+    }
+   }
+   .otherPosts{
+    margin-top: 10px;
+   }
+
+   .horizontalPosts{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 8rem;
+   }
+}
+
+
+// Styling for horizontal post
+@media only screen and (max-width: 600px) {
+  .homepage{
+    
+    .horizontalPosts{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+       }
+  }
+
+}

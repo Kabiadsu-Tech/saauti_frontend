@@ -1,6 +1,7 @@
 import "./singlecard.scss";
+import { Link } from "react-router-dom";
 
-const SingleCard = ({ imageLink, authorName, title, postSnippet }) => {
+const SingleCard = ({ imageLink, authorName, title, postSnippet,linkTo }) => {
   return (
     <div className="singlePost">
       <div className="imageContainer">
@@ -11,7 +12,7 @@ const SingleCard = ({ imageLink, authorName, title, postSnippet }) => {
           <small>{authorName}</small>
         </div>
         <div className="title">
-          <h3>{title}</h3>
+          <Link to={`posts/${linkTo}`}><h3>{title}</h3></Link>
         </div>
         <div className="post-snippet">{postSnippet}</div>
       </div>
