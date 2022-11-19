@@ -10,7 +10,7 @@ return (
   login.isLoggedIn ?
       <div>
           <Insert/>
-      </div>:<p>No Permission For This {navigate("/")}</p>
+      </div>:<p>Something Wrong</p>
     )
   }
  
