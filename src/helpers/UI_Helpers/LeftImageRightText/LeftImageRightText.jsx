@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import "./leftImageRightText.scss";
 
-const LeftImageRightText = ({ imageLink, authorName, title, postSnippet }) => {
+const LeftImageRightText = ({ imageLink, authorName, title, postSnippet,linkTo }) => {
   return (
   <div>
       <div className="leftImageRightText">
@@ -12,7 +13,8 @@ const LeftImageRightText = ({ imageLink, authorName, title, postSnippet }) => {
           <small>{authorName}</small>
         </div>
         <div className="title">
-          <h3>{title}</h3>
+          <Link to={`posts/${linkTo}`}><h3>{title}</h3></Link>
+        
         </div>
         <div className="post-snippet">{postSnippet}</div>
       </div>

@@ -1,29 +1,22 @@
 .leftImageRightText{
     display: flex;
-    justify-content: center;
-    margin: auto;
     margin-top: 2rem;
-    width: 50%;
+    // width: calc(100% - 228px);
     font-weight: 400;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    // padd
     .imageContainer{
-        width: 400px;
-       
+        width: 341px;
         img{
             width: 100%;
-           
             background-position: center center;
-
             object-fit: contain;
         }
     }
 
    .textContainer{
-    margin-left: 1rem;
+    width: 40%;
+    margin-left: 2rem;
     .authorName{
         text-align: left;
-        margin-top: 5px;
         box-sizing: inherit;
         color: #dc0f14;
         font-family: tradegothiclt;
@@ -31,13 +24,11 @@
         text-transform: uppercase;
         line-height: 2rem;
         position: relative;
-        font-size: 1.6rem;
-        
+        font-size: 1.6rem;  
        
     }
     .title{
         h3{
-            margin-top: 5px;
             font-size: 2rem !important;
         }
 

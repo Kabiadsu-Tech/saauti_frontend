@@ -12,7 +12,7 @@ import SingleCard from "../../helpers/UI_Helpers/SingleCard/SingleCard";
 const Homepage = () => {
   const [heroPost, setHeroPost] = useState();
   const [twoPosts,setTwoPosts]=useState([]);
-  const [remainingPosts,setRemainingPosts]=useState([])
+  const [remainingPosts,setRemainingPosts]=useState()
 
   const { data, isPending, error } = useFetch(
     `${process.env.REACT_APP_DEVELOPMENT_API}/posts`
@@ -21,7 +21,7 @@ const Homepage = () => {
     if(data){
       setHeroPost(data[0]);
       setTwoPosts(getPostsFromIndex(data,1,2))
-      setRemainingPosts(data, 3,data.length)
+      setRemainingPosts(getPostsFromIndex(data, 3,5))
     } 
 
   }, [data]);
@@ -30,12 +30,12 @@ const Homepage = () => {
     setDifferentPosts();
   }, [setDifferentPosts]);
 
-  heroPost && console.log("Bole toh hero", remainingPosts);
+  heroPost && console.log("Remaining posts", remainingPosts);
   return (
     <div className="homepage">
       {isPending && <Spinner animation="grow" />}
       {error && <div>{error} </div>}
-      {/* The main post is the lates post */}
+      {/* The main post is the latest post */}
       {heroPost && (
         <div className="mainPost">
           <div className="imageContainer">
@@ -48,8 +48,7 @@ const Homepage = () => {
                 </Link>
               </div>
               <div className="snippet">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui,
-                illum,{`.....`}
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore expedita aspernatur tempore officia ratione maxime culpa laboriosam vel. Culpa incidunt, eos possimus doloremque at veniam excepturi numquam consequuntur sed?,{`.....`}
               </div>
             </div>
           </div>
@@ -63,22 +62,25 @@ const Homepage = () => {
             return(
               <SingleCard imageLink={post.postHeroImage} authorName={post.author}
               title={post.title}
-              postSnippet="loremskdljasdk;lasjdasd jaksdaskdlasdjsak"
+              postSnippet="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere nihil cum itaque quibusdam et unde ullam eveniet explicabo, possimus veritatis eligendi optio similique modi nesciunt."
               linkTo={post._id}
               />
              
             )
           })}
+          
 
         </div>
         <div className="remainingPosts">
-          {remainingPosts.map((post)=>{
-            // return(
-            //   <LeftImageRightText imageLink={post.postHeroImage} authorName={post.author}
-            //   title={post.title}
-            //   postSnippet="loremskdljasdk;lasjdasd jaksdaskdlasdjsak"/>
-            // )
-          })}
+          {remainingPosts && remainingPosts.map((post)=>{
+             return(
+              <LeftImageRightText imageLink={post["postHeroImage"]} authorName={post["author"]}
+              title={post["title"]}
+              postSnippet={"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere nihil cum itaque quibusdam et unde ullam eveniet explicabo, possimus veritatis eligendi optio similique modi nesciunt."}
+              linkTo={post["_id"]}
+              />
+             )
+            })}
         </div>
     
       </div>
