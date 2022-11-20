@@ -6,7 +6,7 @@ import TwoPostHorizontal from "../../helpers/UI_Helpers/TwoPostHorizontal/TwoPos
 import LeftImageRightText from "../../helpers/UI_Helpers/LeftImageRightText/LeftImageRightText";
 import Spinner from "react-bootstrap/Spinner";
 import { useFetch } from "../../hooks/useFetch";
-import "./homepage.scss";
+import  styles from "./homepage.scss";
 import SingleCard from "../../helpers/UI_Helpers/SingleCard/SingleCard";
 
 const Homepage = () => {
@@ -69,7 +69,6 @@ const Homepage = () => {
             )
           })}
           
-
         </div>
         <div className="remainingPosts">
           {remainingPosts && remainingPosts.map((post)=>{
