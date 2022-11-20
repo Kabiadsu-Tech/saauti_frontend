@@ -4,15 +4,14 @@
     justify-content: center;
 }
 
-.navbarContainer{
-  position: relative;
-  background-color: red;
-  /* margin-right: 0.5rem;   */
-  padding-left: 4rem;
-  padding-right: 4rem;
-}
+
 .navbar{
- padding-left: 20vw;
+  width: 100%;
+
+}
+/* This centres the navbar */
+.me-auto {
+  margin: auto;
 }
 #basic-navbar-nav a {
 color: black;

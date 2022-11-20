@@ -16,6 +16,7 @@ const NavbarComponent = () => {
     navigate("/");
     dispatch(checkLogin({ isLoggedIn: false, userId: null }));
   };
+
   return (
     <div>
       <div className="logoContainer">
@@ -45,9 +46,7 @@ const NavbarComponent = () => {
 
               <NavLink to="/create">खोजरिपोर्ट</NavLink>
 
-              <NavLink to="/create">म्यागजिन </NavLink>
-
-              <NavDropdown title=" नीति" id="basic-nav-dropdown">
+              {/* <NavDropdown title=" नीति" id="basic-nav-dropdown">
                 <NavDropdown.Item>
                   <NavLink to="/राजनीति">गृहनीति</NavLink>
                 </NavDropdown.Item>
@@ -57,13 +56,12 @@ const NavbarComponent = () => {
                 <NavDropdown.Item>
                   <NavLink to="/राजनीति">अर्थनीति</NavLink>
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
 
               <NavLink to="/posts">सबै</NavLink>
 
               <NavLink to="/create">पोडकाष्ट</NavLink>
 
-              <NavLink to="/create">म्यागजिन </NavLink>
               {login.isLoggedIn ? (
                 <NavLink onClick={logoutHanlder}>लग-out</NavLink>
               ) : (
