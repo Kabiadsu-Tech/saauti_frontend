@@ -23,7 +23,7 @@ const NavbarComponent = () => {
         <h1>साउती</h1>
       </div>
     
-        <Navbar  className="navbar justify-content-center"  bg="light" expand="lg">
+        <Navbar className="navbar"  bg="light" expand="lg">
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="">
             <Nav className="me-auto">

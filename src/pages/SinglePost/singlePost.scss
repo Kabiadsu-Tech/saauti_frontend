@@ -1,6 +1,6 @@
 .singlePostContainer{
     margin-top: 1rem;
-    width: 50%;
+    width: 70%;
     margin: auto;
 
 }
@@ -71,3 +71,8 @@
     }
 }
 
+@media only screen and (max-width: 600px) {
+    .singlePostContainer{
+        width: 90%;
+    }
+}
