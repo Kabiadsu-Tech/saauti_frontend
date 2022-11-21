@@ -6,7 +6,7 @@
     justify-content: center;
    .mainPost{
     width: 60%;
-    margin: auto;
+    margin: 5vh auto ;
     position: relative;
     .imageContainer{
         display: flex;
@@ -69,14 +69,19 @@
 // Styling for horizontal post
 @media only screen and (max-width: 600px) {
   .homepage{
+    .mainPost{
+        width: 100%;
+        margin: 0;
+    }
     .mainPostSnippet{
         padding: 1rem;
         box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
         transition: 0.3s;
-        width: 354px;
+        width: 96% !important;
         position: relative !important;
         background-color: white;
-        border-radius: 15px;
+        border-radius: 1px !important;
+        margin: 0 !important;
     }
     .otherPosts{
         overflow-x: hidden;
@@ -114,7 +119,8 @@
 
 @media only screen and (max-width:927px) {
     .homepage{
-        
+        width: 90%;
+        margin: auto;
         .mainPostSnippet{
             position: relative;
         }
@@ -134,7 +140,20 @@
 
   @media only screen and (max-width:1293px) {
     .homepage{
-        
+        width: 100% !important;
+        .mainPost{
+            width: 90%;
+        }
+        .mainPostSnippet{
+            position: relative !important;
+            width: 100%;
+        }
+        .otherPosts{
+            .textContainer{
+            width: 60%;
+
+            }
+        }
    
        .otherPosts{
         width: 100%;
