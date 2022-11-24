@@ -31,6 +31,12 @@
         
     }
    }
+   .singlePost .title h3{
+    h3{
+        width: 100%;
+    }
+   }
+
    .otherPosts{
     
     display: flex;
@@ -130,7 +136,6 @@
         .otherPosts{
             .textContainer{
             width: 60%;
-
             }
         }
      
@@ -139,22 +144,17 @@
   }
 
   @media only screen and (max-width:1293px) {
-    .homepage{
-        width: 100% !important;
-        .mainPost{
-            width: 90%;
-        }
-        .mainPostSnippet{
-            position: relative !important;
-            width: 100%;
-        }
-        .otherPosts{
-            .textContainer{
-            width: 60%;
 
-            }
-        }
-   
+   .mainPostSnippet{
+    padding: 1rem;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    transition: 0.3s;
+    width: 88% !important;
+    position: relative !important;
+    background-color: white;
+    border-radius: 1px !important;
+    margin: 0 !important;
+   }
        .otherPosts{
         width: 100%;
         .remainingPosts{
@@ -166,6 +166,6 @@
         }
        }
      
-    }
+    
   
   }

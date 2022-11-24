@@ -1,0 +1,15 @@
+footer{
+    width: 100%;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background: rgb(248,249,250);
+    ul{
+        li{
+            list-style: none;
+            cursor: pointer;
+            padding-bottom: 0.4rem;
+        }
+    }
+}
