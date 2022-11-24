@@ -7,6 +7,7 @@ import NotFound from "./pages/404/NotFound";
 import SharedLayout from "./pages/SharedLayout/SharedLayout"
 import SinglePost from "./pages/SinglePost/SinglePost"
 import AllPost from "./pages/AllPost/AllPost"
+import Footer from "./components/footer/Footer";
 
 function App() {
   const { data, isPending, error } = useFetch(
@@ -27,6 +28,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+      <Footer/>
     </div>
   );
 }
